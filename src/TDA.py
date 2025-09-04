@@ -16,7 +16,81 @@ cadis = ("Calculo Multivariado",
         "Lengua Extranjera", 
         "Estructuras de Información",
         )
+# Estas funciones aseguran que el usuario ingrese datos válidos
+# y repiten la pregunta hasta obtener una entrada correcta
 
+def validar_opcion_menu():
+    """
+    Valida que la opción del menú sea válida (1-4)
+    Retorna: string con la opción válida
+    """
+    while True:
+        try:
+            opcion = input("- ")
+            if opcion in ["1", "2", "3", "4"]:
+                return opcion
+            else:
+                print("Opción no válida. Por favor ingrese 1, 2, 3 o 4.")
+        except:
+            print("Error en la entrada. Intente nuevamente.")
+
+def validar_nota():
+    """
+    Valida que la nota sea un número flotante válido entre 0 y 5
+    Retorna: float con la nota válida
+    """
+    while True:
+        try:
+            nota = float(input("Ingresa la nota: "))
+            if 0.0 <= nota <= 5.0:
+                return nota
+            else:
+                print("La nota debe estar entre 0.0 y 5.0. Intente nuevamente.")
+        except ValueError:
+            print("Por favor ingrese un número válido. Intente nuevamente.")
+
+def validar_indice(lista):
+    """
+    Valida que el índice sea válido para la lista
+    Parámetros: lista - la lista de calificaciones
+    Retorna: int con el índice válido
+    """
+    while True:
+        try:
+            indice = int(input("Ingresa el índice de la nota (empezando desde 0): "))
+            if 0 <= indice < len(lista):
+                return indice
+            else:
+                print(f"El índice debe estar entre 0 y {len(lista)-1}. Intente nuevamente.")
+        except ValueError:
+            print("Por favor ingrese un número entero válido. Intente nuevamente.")
+
+def validar_continuar():
+    """
+    Valida la respuesta de continuar (S/N)
+    Retorna: boolean - True si quiere continuar, False si no
+    """
+    while True:
+        respuesta = input("Deseas continuar? S/N ").lower().strip()
+        if respuesta in ["s", "si", "n", "no"]:
+            return respuesta in ["s", "si"]
+        else:
+            print("Por favor responda S o N. Intente nuevamente.")
+
+def validar_cadi():
+    """
+    Valida la selección de CADI (1-6)
+    Retorna: string con la opción válida del CADI
+    """
+    while True:
+        try:
+            opcion = input("¿Qué CADI vas a calificar? ")
+            if opcion in ["1", "2", "3", "4", "5", "6"]:
+                return opcion
+            else:
+                print("Opción no válida. Por favor ingrese un número del 1 al 6.")
+        except:
+            print("Error en la entrada. Intente nuevamente.")
 # Funcion para agregar una nota Nueva
 def agregar(lista, nota):
     lista.append(nota)
@@ -26,9 +100,9 @@ def modificar(lista, cambio, notaNew):
     lista[cambio] = notaNew
     print (f"Se actualizo la lista: {lista}")
 # Funcion que elimina una nota pidiendo el indice
-def eliminar(lista, borrar):
-    lista.pop(borrar)
-    print(f"Se elimino la nota: {lista}")
+def eliminar(lista, indice):
+    nota_eliminada = lista.pop(indice)
+    print(f"Se elimino la nota {nota_eliminada}. Lista actial: {lista}")
 # Funcion para calcular el promedio de cada uno de los CADIS
 def promedio(lista):
     if len(lista) == 0:
@@ -37,6 +111,7 @@ def promedio(lista):
     suma = sum(lista)
     promedio = suma / len(lista)
     print(f"El promedio final del estudiante es: {promedio:.2f}")
+
 # Aqui mostramos el menu para modificar las listas  
 def motrar_menu():
     print("¿Que opcion vas a realizar? ")
@@ -44,19 +119,22 @@ def motrar_menu():
     print("2. Modificar una nota. ")
     print("3. Eliminar una nota. ")
     print("4. Calcular promedio.")
-# Declaramos variables para que el usuario ingrese nombre del estudiante 
+# Validación del nombre del estudiante
+# Se repite hasta que el usuario ingrese un nombre válido (no vacío)
+while True:
+    estudiante = input("Ingrese el nombre del estudiante: ").strip()
+    if estudiante:
+        break
+    else:
+        print("El nombre no puede estar vacío. Intente nuevamente.")
 
-estudiante = str(input("Ingrese el nombre del estudiante. "))
+# Mostrar información del estudiante y materias disponibles
 print(f"CADIS del estudiante: {estudiante}. ")
 
 print("-----------------------------------------")
-#Este for lo utilixzamos para imprimir la dupla de los CADIS
 for curso in cadis:
     print("-", curso)
 print("-----------------------------------------")
-
-X = str(input("Deseas continuar? S/N "))
-x = X.lower()
 
 if x == "s" or x == "si" :
         print("Elija que CADI deseas calificar. ")

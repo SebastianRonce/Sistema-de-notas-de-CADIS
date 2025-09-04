@@ -187,7 +187,7 @@ if x == "s" or x == "si" :
                      # Estructuras de Información
             motrar_menu()
             opcion6 = str(input("- "))
-            if opcion5 == "1":
+            if opcion6 == "1":
                 print(f"Lista actual: {calificaciones_Estructuras}")
                 new = float(input("Ingresa la nota: "))
                 agregar(calificaciones_Estructuras, new)

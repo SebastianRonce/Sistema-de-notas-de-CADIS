@@ -8,6 +8,7 @@ calificaciones_Fundamentos = [4.0, 4.2]
 calificaciones_Lenguje = [3.0, 4.0]
 calificaciones_Estructuras = [5.0, 3.0]
 
+# Tupla que contiene los nombres de todas las materias (CADIs)
 # Esta es la Tupla
 cadis = ("Calculo Multivariado", 
         "Física III", 

@@ -112,14 +112,16 @@ def promedio(lista):
     print(f"El promedio final del estudiante es: {promedio:.2f}")
 
 # Aqui mostramos el menu para modificar las listas  
-def motrar_menu():
-    print("¿Que opcion vas a realizar? ")
+
+def mostrar_menu():
+    """
+    Muestra el menú de opciones disponibles para cada CADI
+    """
+    print("¿Qué opción vas a realizar? ")
     print("1. Agregar una nota. ")
     print("2. Modificar una nota. ")
     print("3. Eliminar una nota. ")
     print("4. Calcular promedio.")
-# Validación del nombre del estudiante
-# Se repite hasta que el usuario ingrese un nombre válido (no vacío)
 while True:
     estudiante = input("Ingrese el nombre del estudiante: ").strip()
     if estudiante:

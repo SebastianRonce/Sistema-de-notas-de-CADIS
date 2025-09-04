@@ -136,7 +136,9 @@ for curso in cadis:
     print("-", curso)
 print("-----------------------------------------")
 
-if x == "s" or x == "si" :
+# Preguntar si desea continuar con el sistema
+if validar_continuar():
+        # Mostrar menú de materias disponibles
         print("Elija que CADI deseas calificar. ")
         print("1. Calculo Multivariado. ")
         print("2. Física III. ")
@@ -145,146 +147,219 @@ if x == "s" or x == "si" :
         print("5. Lengua Extranjera. ")
         print("6. Estructuras de Información ")
         
-        opcion = str(input("¿Qué CADI vas a calificar? "))
+        opcion = validar_cadi()
         print("-----------------------------------------")
+        # Validar selección de CADI
+if opcion == "1":
+        # CÁLCULO MULTIVARIADO
+        mostrar_menu()
+        opcion1 = validar_opcion_menu()
         
-        if opcion == "1":
-            #Calculo Multivariado 
-            motrar_menu()
-            opcion1 = str(input("- "))
-            if opcion1 == "1":
-                print(f"Lista actual: {calificaciones_Calculo}")      
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Calculo, new)
-            elif opcion1 == "2":
-                print(f"Notas: {calificaciones_Calculo}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
+        if opcion1 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Calculo}")
+            new = validar_nota()
+            agregar(calificaciones_Calculo, new)
+            
+        elif opcion1 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Calculo}")
+            if len(calificaciones_Calculo) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Calculo)
+                nuevaNota = validar_nota()
                 modificar(calificaciones_Calculo, cambiar, nuevaNota)
-            elif opcion1 == "3":
-                print(f"Notas: {calificaciones_Calculo}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Calculo, borrar)
-            elif opcion1 == "4":
-                print(f"Lista actual: {calificaciones_Calculo}")
-                promedio(calificaciones_Calculo)
-            else:
-                print("Opcion no valida. ")
-        
-        elif opcion == "2":
-             #Fisica III   
-            motrar_menu()
-            opcion2 = str(input("- "))
-            if opcion2 == "1":
-                print(f"Lista actual: {calificaciones_Fisica}")    
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Fisica, new)
-            elif opcion2 == "2":
-                print(f"Notas: {calificaciones_Fisica}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
-                modificar(calificaciones_Fisica, cambiar, nuevaNota)
-            elif opcion2 == "3":    
-                print(f"Notas: {calificaciones_Fisica}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Fisica, borrar)
-            elif opcion2 == "4":
-                print(f"Lista actual: {calificaciones_Fisica}")
-                promedio(calificaciones_Fisica)
-            else:
-                print("Opcion no valida. ")
-        
-        elif opcion == "3":
-            #Arquictectura de computadores
-            motrar_menu()
-            opcion3 = str(input("- "))
-            if opcion3 == "1":
-                print(f"Lista actual: {calificaciones_Arquitectura}")
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Arquitectura, new)
-            elif opcion3 == "2":
-                print(f"Notas: {calificaciones_Arquitectura}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
-                modificar(calificaciones_Arquitectura, cambiar, nuevaNota)
-            elif opcion3 == "3":
-                print(f"Notas: {calificaciones_Arquitectura}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Arquitectura, borrar)
-            elif opcion3 == "4":
-                print(f"Lista actual: {calificaciones_Arquitectura}")
-                promedio(calificaciones_Arquitectura)
-            else:
-                print("Opcion no valida. ")
-        
-        elif opcion == "4":
-                #Fundamentos Administrativos
-            motrar_menu()
-            opcion4 = str(input("- "))
-            if opcion4 == "1":
-                print(f"Lista actual: {calificaciones_Fundamentos}")
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Fundamentos, new)
-            elif opcion4 == "2":
-                print(f"Notas: {calificaciones_Fundamentos}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
-                modificar(calificaciones_Fundamentos, cambiar, nuevaNota)
-            elif opcion4 == "3":
-                print(f"Notas: {calificaciones_Fundamentos}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Fundamentos, borrar)
-            elif opcion4 == "4":
-                print(f"Lista actual: {calificaciones_Fundamentos}")
-                promedio(calificaciones_Fundamentos)
-            else:
-                print("Opcion no valida. ")
                 
-        elif opcion == "5":
-                #Lengua Estrangera
-            motrar_menu()
-            opcion5 = str(input("- "))
-            if opcion5 == "1":
-                print(f"Lista actual: {calificaciones_Lenguje}")
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Lenguje, new)
-            elif opcion5 == "2":
-                print(f"Notas: {calificaciones_Lenguje}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
-                modificar(calificaciones_Lenguje, cambiar, nuevaNota)
-            elif opcion5 == "3":
-                print(f"Notas: {calificaciones_Lenguje}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Lenguje, borrar)
-            elif opcion5 == "4":
-                print(f"Lista actual: {calificaciones_Lenguje}")
-                promedio(calificaciones_Lenguje)
+        elif opcion1 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Calculo}")
+            if len(calificaciones_Calculo) == 0:
+                print("No hay notas para eliminar.")
             else:
-                print("Opcion no valida. ")
-                    
-        elif opcion == "6":
-                     # Estructuras de Información
-            motrar_menu()
-            opcion6 = str(input("- "))
-            if opcion6 == "1":
-                print(f"Lista actual: {calificaciones_Estructuras}")
-                new = float(input("Ingresa la nota: "))
-                agregar(calificaciones_Estructuras, new)
-            elif opcion6 == "2":
-                print(f"Notas: {calificaciones_Estructuras}")
-                cambiar = int(input("Ingresa el area de la nota que desea modificar: "))
-                nuevaNota = float(input("Ingrese la nueva nota: "))
-                modificar(calificaciones_Estructuras, cambiar, nuevaNota)
-            elif opcion6 == "3":
-                print(f"Notas: {calificaciones_Estructuras}")
-                borrar = int(input("ingresa el area de la nota que vas a eliminar. "))
-                eliminar(calificaciones_Estructuras, borrar)
-            elif opcion6 == "4":
-                print(f"Lista actual: {calificaciones_Estructuras}")
-                promedio(calificaciones_Estructuras)
-            else:
-                print("Opcion no valida. ")
-else:
-    print("Saliendo...")
+                borrar = validar_indice(calificaciones_Calculo)
+                eliminar(calificaciones_Calculo, borrar)
+                
+        elif opcion1 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Calculo}")
+            promedio(calificaciones_Calculo)
+
+    elif opcion == "2":
+        # FÍSICA III
+        mostrar_menu()
+        opcion2 = validar_opcion_menu()
         
+        if opcion2 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Fisica}")
+            new = validar_nota()
+            agregar(calificaciones_Fisica, new)
+            
+        elif opcion2 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Fisica}")
+            if len(calificaciones_Fisica) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Fisica)
+                nuevaNota = validar_nota()
+                modificar(calificaciones_Fisica, cambiar, nuevaNota)
+                
+        elif opcion2 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Fisica}")
+            if len(calificaciones_Fisica) == 0:
+                print("No hay notas para eliminar.")
+            else:
+                borrar = validar_indice(calificaciones_Fisica)
+                eliminar(calificaciones_Fisica, borrar)
+                
+        elif opcion2 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Fisica}")
+            promedio(calificaciones_Fisica)
+
+    elif opcion == "3":
+        # ARQUITECTURA DE COMPUTADORES
+        mostrar_menu()
+        opcion3 = validar_opcion_menu()
+        
+        if opcion3 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Arquitectura}")
+            new = validar_nota()
+            agregar(calificaciones_Arquitectura, new)
+            
+        elif opcion3 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Arquitectura}")
+            if len(calificaciones_Arquitectura) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Arquitectura)
+                nuevaNota = validar_nota()
+                modificar(calificaciones_Arquitectura, cambiar, nuevaNota)
+                
+        elif opcion3 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Arquitectura}")
+            if len(calificaciones_Arquitectura) == 0:
+                print("No hay notas para eliminar.")
+            else:
+                borrar = validar_indice(calificaciones_Arquitectura)
+                eliminar(calificaciones_Arquitectura, borrar)
+                
+        elif opcion3 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Arquitectura}")
+            promedio(calificaciones_Arquitectura)
+
+    elif opcion == "4":
+        # FUNDAMENTOS ADMINISTRATIVOS
+        mostrar_menu()
+        opcion4 = validar_opcion_menu()
+        
+        if opcion4 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Fundamentos}")
+            new = validar_nota()
+            agregar(calificaciones_Fundamentos, new)
+            
+        elif opcion4 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Fundamentos}")
+            if len(calificaciones_Fundamentos) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Fundamentos)
+                nuevaNota = validar_nota()
+                modificar(calificaciones_Fundamentos, cambiar, nuevaNota)
+                
+        elif opcion4 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Fundamentos}")
+            if len(calificaciones_Fundamentos) == 0:
+                print("No hay notas para eliminar.")
+            else:
+                borrar = validar_indice(calificaciones_Fundamentos)
+                eliminar(calificaciones_Fundamentos, borrar)
+                
+        elif opcion4 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Fundamentos}")
+            promedio(calificaciones_Fundamentos)
+
+    elif opcion == "5":
+        # LENGUA EXTRANJERA
+        mostrar_menu()
+        opcion5 = validar_opcion_menu()
+        
+        if opcion5 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Lenguje}")
+            new = validar_nota()
+            agregar(calificaciones_Lenguje, new)
+            
+        elif opcion5 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Lenguje}")
+            if len(calificaciones_Lenguje) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Lenguje)
+                nuevaNota = validar_nota()
+                modificar(calificaciones_Lenguje, cambiar, nuevaNota)
+                
+        elif opcion5 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Lenguje}")
+            if len(calificaciones_Lenguje) == 0:
+                print("No hay notas para eliminar.")
+            else:
+                borrar = validar_indice(calificaciones_Lenguje)
+                eliminar(calificaciones_Lenguje, borrar)
+                
+        elif opcion5 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Lenguje}")
+            promedio(calificaciones_Lenguje)
+
+    elif opcion == "6":
+        # ESTRUCTURAS DE INFORMACIÓN
+        mostrar_menu()
+        opcion6 = validar_opcion_menu()
+        
+        if opcion6 == "1":
+            # Agregar nueva nota
+            print(f"Lista actual: {calificaciones_Estructuras}")
+            new = validar_nota()
+            agregar(calificaciones_Estructuras, new)
+            
+        elif opcion6 == "2":
+            # Modificar nota existente
+            print(f"Notas: {calificaciones_Estructuras}")
+            if len(calificaciones_Estructuras) == 0:
+                print("No hay notas para modificar.")
+            else:
+                cambiar = validar_indice(calificaciones_Estructuras)
+                nuevaNota = validar_nota()
+                modificar(calificaciones_Estructuras, cambiar, nuevaNota)
+                
+        elif opcion6 == "3":
+            # Eliminar nota existente
+            print(f"Notas: {calificaciones_Estructuras}")
+            if len(calificaciones_Estructuras) == 0:
+                print("No hay notas para eliminar.")
+            else:
+                borrar = validar_indice(calificaciones_Estructuras)
+                eliminar(calificaciones_Estructuras, borrar)
+                
+        elif opcion6 == "4":
+            # Calcular promedio
+            print(f"Lista actual: {calificaciones_Estructuras}")
+            promedio(calificaciones_Estructuras)
+
+else:
+    # Si el usuario no desea continuar, terminar el programa
+    print("Saliendo...")

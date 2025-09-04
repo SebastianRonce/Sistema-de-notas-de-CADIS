@@ -123,6 +123,7 @@ def mostrar_menu():
     print("2. Modificar una nota. ")
     print("3. Eliminar una nota. ")
     print("4. Calcular promedio.")
+        
 while True:
     estudiante = input("Ingrese el nombre del estudiante: ").strip()
     if estudiante:
@@ -152,7 +153,7 @@ if validar_continuar():
         opcion = validar_cadi()
         print("-----------------------------------------")
         # Validar selección de CADI
-if opcion == "1":
+    if opcion == "1":
         # CÁLCULO MULTIVARIADO
         mostrar_menu()
         opcion1 = validar_opcion_menu()

@@ -1,4 +1,6 @@
-# Lista de calificaciones
+
+
+# Cada lista representa las notas de un CADI (Curso de Aprendizaje Dirigido)
 calificaciones_Calculo = [4.0, 3.0]
 calificaciones_Fisica = [2.0, 4.5]
 calificaciones_Arquitectura = [3.0, 5.0]
